@@ -48,25 +48,28 @@ binit <- function(input_data="~/bigdata/hic/data/SRR2240738/mm10/output/hic_resu
   
   dataintest <- read.table("/bigdata/wmalab/tkata002/hic/bin/test_binit_datain")
   
-  # test_datain <- rbind(datain[2,],datain[2,],datain[2,],datain[2,],datain[2,],datain[2,],datain[2,],datain[2,], test2, test2, test3,test3,test3,test4, deparse.level = 0)
-  # head(test_datain)
-  # 
-  # dim(test_datain)
-  # 
-  # 
-  # test2<- datain[2,]
-  # test2[1,13] <- "1-2"
-  # 
-  # test3<-datain[2,]
-  # test3[1,3] <-5004201
-  # 
-  # test4 <- datain[2,]
-  # test4[1,3] <-7004201
-  # 
-  # datain <- test_datain
-  # 
-  # 
-  # write.table(datain,"test_binit_datain",append=FALSE, sep="\t", quote=FALSE)
+  test_datain <- rbind(datain[2,],datain[2,],datain[2,],datain[2,],datain[2,],datain[2,],datain[2,],datain[2,], test2, test2, test3,test3,test3,test4,test5, deparse.level = 0)
+  head(test_datain)
+
+  dim(test_datain)
+
+
+  test2<- datain[2,]
+  test2[1,13] <- "1-2"
+
+  test3<-datain[2,]
+  test3[1,3] <-5004201
+
+  test4 <- datain[2,]
+  test4[1,3] <-7004201
+  
+  test5 <- datain[2,]
+  test5[1,2] <- "chr2"
+  
+  datain <- test_datain
+
+
+  write.table(datain,"test_binit_datain",append=FALSE, sep="\t", quote=FALSE)
   
   
   
@@ -98,8 +101,8 @@ binit <- function(input_data="~/bigdata/hic/data/SRR2240738/mm10/output/hic_resu
   #levels(datain_test$rd2_ch)
   
   ##### removing all reads but those for a single chromosome
-  datain_no_inter1<- datain[datain$rd1_ch == as.character(chr_want),] 
-  datain_no_inter <- datain_no_inter1[datain_no_inter1$rd1_ch == datain_no_inter1$rd2_ch,]
+  datain_no_inter<- datain[datain$rd1_ch == as.character(chr_want) & datain$rd1_ch == datain$rd2_ch,] 
+  
   
   #testsum <- sum(datain_test2$rd1_ch != datain_test2$rd2_ch)
   
@@ -130,31 +133,32 @@ binit <- function(input_data="~/bigdata/hic/data/SRR2240738/mm10/output/hic_resu
   binit_preprocessed <- binit_out
   
   
-  ##### making all bins seqential along entire genome
-  for(chr in chromes){
-    add_index = cumbins[chr,] #adding the cumulative sum of bins to make the bin number outputs all sequential
-    #chr <- as.factor(chr)
-    
-    temp1 = binit_out$bin_rd_pos_1[ binit_out$datain_no_inter.rd1_ch == chr ]
-    binit_out$bin_rd_pos_1[ binit_out$datain_no_inter.rd1_ch == chr ] = temp1 + add_index
-    
-    temp2 = binit_out$bin_rd_pos_2[ binit_out$datain_no_inter.rd2_ch == chr ]
-    binit_out$bin_rd_pos_2[ binit_out$datain_no_inter.rd2_ch == chr ] = temp2 + add_index
-  }
+  # ##### making all bins seqential along entire genome ***cut this for the single chrom version
+  # for(chr in chromes){
+  #   add_index = cumbins[chr,] #adding the cumulative sum of bins to make the bin number outputs all sequential
+  #   #chr <- as.factor(chr)
+  #   
+  #   temp1 = binit_out$bin_rd_pos_1[ binit_out$datain_no_inter.rd1_ch == chr ]
+  #   binit_out$bin_rd_pos_1[ binit_out$datain_no_inter.rd1_ch == chr ] = temp1 + add_index
+  #   
+  #   temp2 = binit_out$bin_rd_pos_2[ binit_out$datain_no_inter.rd2_ch == chr ]
+  #   binit_out$bin_rd_pos_2[ binit_out$datain_no_inter.rd2_ch == chr ] = temp2 + add_index
+  # }
+  # 
   
-  #####making the reads sequential as well
-  chrom.sizer = chrom.size[-length(chrom.size),]
-  chrom.sizer <-as.data.frame(chrom.sizer,ncol=1,row.names = chromes) 
-  #chrom.sizer <- colnames(chrom.sizer$V1)
-  for(chr in chromes){
-    add_indexr = chrom.sizer[chr,2] #adding the cumulative sum of reads to make the reads all sequential, not indexed on each chrom
-    
-    tempr1 = binit_out$datain.rd_pos_1[ binit_out$datain_no_inter.rd1_ch == chr ]
-    binit_out$datain.rd_pos_1[ binit_out$datain_no_inter.rd1_ch == chr ] = tempr1 + add_indexr
-    
-    tempr2 = binit_out$datain.rd_pos_2[ binit_out$datain_no_inter.rd2_ch == chr ]
-    binit_out$datain.rd_pos_2[ binit_out$datain_no_inter.rd2_ch == chr ] = tempr2 + add_indexr
-  }
+  # #####making the reads sequential as well
+  # chrom.sizer = chrom.size[-length(chrom.size),]
+  # chrom.sizer <-as.data.frame(chrom.sizer,ncol=1,row.names = chromes) 
+  # #chrom.sizer <- colnames(chrom.sizer$V1)
+  # for(chr in chromes){
+  #   add_indexr = chrom.sizer[chr,2] #adding the cumulative sum of reads to make the reads all sequential, not indexed on each chrom
+  #   
+  #   tempr1 = binit_out$datain.rd_pos_1[ binit_out$datain_no_inter.rd1_ch == chr ]
+  #   binit_out$datain.rd_pos_1[ binit_out$datain_no_inter.rd1_ch == chr ] = tempr1 + add_indexr
+  #   
+  #   tempr2 = binit_out$datain.rd_pos_2[ binit_out$datain_no_inter.rd2_ch == chr ]
+  #   binit_out$datain.rd_pos_2[ binit_out$datain_no_inter.rd2_ch == chr ] = tempr2 + add_indexr
+  # }
   
   
   # ##check to see if the sequntial binning worked
