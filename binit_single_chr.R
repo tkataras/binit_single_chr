@@ -1,242 +1,325 @@
-Last login: Wed Nov 29 11:25:59 on ttys001
-ucrwpa3-7-10-25-89-207:~ malab$ ssh -XY tkata002@biocluster.ucr.edu
-tkata002@biocluster.ucr.edu's password: 
-Last login: Fri Dec  8 15:31:28 2017 from 169.235.209.133
 
---------------------------------------------------------------------------------
- University of California, Riverside - HPCC (High-Performance Computing Center)
---------------------------------------------------------------------------------
+#fuction itself
 
-More information about HPCC and how to use the resources provided can
-be found at http://hpcc.ucr.edu/manuals_linux-cluster_intro.html
 
-Please send all questions and support requests to support@biocluster.ucr.edu
 
-Note: The default version of R is now 3.4.2
---------------------------------------------------------------------------------
-
-tkata002@globus:~$ cd bigdata/hic/bin/
-tkata002@globus:~/bigdata/hic/bin$ vim test_binit.sh
-tkata002@globus:~/bigdata/hic/bin$ sbatch test_binit.sh
-Submitted batch job 1329196
-tkata002@globus:~/bigdata/hic/bin$ squeue -u tkata002
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           1329196     intel binit_12 tkata002 PD       0:00      1 (Priority)
-           1325115   highmem binit_11 tkata002  R 2-22:48:27      1 h03
-           1326171   highmem binit_12 tkata002  R 1-03:13:04      1 h05
-tkata002@globus:~/bigdata/hic/bin$ scancel 1326171
-tkata002@globus:~/bigdata/hic/bin$ squeue -u tkata002
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           1326171   highmem binit_12 tkata002 CG 1-03:13:43      1 h05
-           1325115   highmem binit_11 tkata002  R 2-22:49:21      1 h03
-           1329196     intel binit_12 tkata002  R       0:44      1 i19
-tkata002@globus:~/bigdata/hic/bin$ squeue -u tkata002
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           1326171   highmem binit_12 tkata002 CG 1-03:13:43      1 h05
-           1325115   highmem binit_11 tkata002  R 2-22:49:36      1 h03
-           1329196     intel binit_12 tkata002  R       0:59      1 i19
-tkata002@globus:~/bigdata/hic/bin$ squeue -u tkata002
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           1326171   highmem binit_12 tkata002 CG 1-03:13:43      1 h05
-           1325115   highmem binit_11 tkata002  R 2-22:50:07      1 h03
-           1329196     intel binit_12 tkata002  R       1:30      1 i19
-tkata002@globus:~/bigdata/hic/bin$ ls
-Mask_mm9_w_129sRefCast~~                           make_hist_assignments.R
-SRR2240738_allValidPairs_binit_out_12_06_chrX      make_hist_assignments.R~
-SRR2240738_allValidPairs_binit_out_chr1            mask_mm9_w_129sRefCast2
-SRR2240738_allValidPairs_binit_out_chrM            mask_mm9_w_129sRefCast2~
-binit.R                                            mm10_allele_test_load_cha_assign.R
-binit.R~                                           mm10_allele_test_load_cha_assign.R~
-binit_11_01.R                                      mm10_allele_test_load_cha_assign~
-binit_11_02.R                                      my.stdout
-binit_11_06.R                                      my.stdout2
-binit_11_07.R                                      my.stdout3
-binit_11_08.R                                      my.stdout_binit_11_29
-binit_11_09.R                                      my.stdout_binit_12_06_X_only
-binit_11_10.R                                      my.stdout_binit_12_07_M_only
-binit_11_13.R                                      my.stdout_binit_12_07_ch1_only
-binit_11_15.R                                      my.stdout_binit_12_08_ch1_only
-binit_11_22.R                                      my.stdout_no_subset_binit
-binit_11_28.R                                      my.stdout_no_subset_binit_11_07_ma_lab
-binit_11_28.R~                                     my.stdout_no_subset_binit_11_07_ma_lab_2
-binit_12_07.R                                      my.stdout_no_subset_binit_11_07_ma_lab_3
-binit_12_07.R~                                     my.stdout_no_subset_binit_11_07_ma_lab_4
-binit_12_08.R                                      my.stdout_no_subset_binit_11_07_ma_lab_5
-binit_chr_select.R                                 my.stdout_no_subset_binit_11_07_ma_lab_6
-binit_out                                          my.stdout_no_subset_binit_11_07_ma_lab_7
-binit_string_test.R                                my.stdout_no_subset_binit_11_08_ma_lab_1
-binit_testing.R                                    my.stdout_no_subset_binit_11_08_ma_lab_2
-binningV2.R                                        my.stdout_no_subset_binit_11_08_ma_lab_3
-binning_test                                       my.stdout_no_subset_binit_11_08_ma_lab_4
-bintest.sh                                         my.stdout_no_subset_binit_11_08_ma_lab_5
-build-index-mm10mask.sh                            my.stdout_no_subset_binit_11_08_ma_lab_6
-build-index-mm10mask.sh~                           my.stdout_no_subset_binit_11_08_ma_lab_7_test-1
-dictionarypractice.R                               my.stdout_no_subset_binit_11_08_ma_lab_8
-extract_SNPs                                       my.stdout_no_subset_binit_11_09_ma_lab_1
-extract_SNPs~                                      my.stdout_no_subset_binit_11_09_ma_lab_2
-get-data-from-GEO.sh                               my.stdout_no_subset_binit_11_09_ma_lab_chr
-get-data-from-GEO.sh~                              my.stdout_no_subset_binit_11_09_ma_lab_chr2
-get-fastq.sh                                       my.stdout_no_subset_binit_11_09_ma_lab_chr3
-get-fastq.sh~                                      my.stdout_no_subset_binit_11_09_ma_lab_chr4
-mNPe_allValidPairs_binit_out                       my.stdout_no_subset_binit_11_09_ma_lab_chr5
-mNPe_allValidPairs_binit_out2                      my.stdout_no_subset_binit_11_10
-mNPe_allValidPairs_binit_out3                      my.stdout_no_subset_binit_11_13
-mNPe_allValidPairs_binit_out_11_08b                my.stdout_string
-mNPe_allValidPairs_binit_out_11_09                 my.stdout_string_ifelse
-mNPe_allValidPairs_binit_out_11_09_chr1            slurm-1186709.out
-mNPe_allValidPairs_binit_out_11_09_chr2            slurm-1217762.out
-mNPe_allValidPairs_binit_out_11_09_chr2t           slurm-1217763.out
-mNPe_allValidPairs_binit_out_11_09_chr3            slurm-1217790.out
-mNPe_allValidPairs_binit_out_11_09_chr4            slurm-1217795.out
-mNPe_allValidPairs_binit_out_11_09_chr5            slurm-1279580.out
-mNPe_allValidPairs_binit_out_11_10                 test_binit.R
-mNPe_allValidPairs_binit_out_11_13                 test_binit.sh
-mNPe_allValidPairs_binit_out_11_13_binit_out_chr1  test_binit.sh~
-mNPe_allValidPairs_binit_out_11_15                 testing_binit_loop_11_08.R
-tkata002@globus:~/bigdata/hic/bin$ ls -t
-my.stdout_binit_12_08_ch1_only                     mNPe_allValidPairs_binit_out
-test_binit.sh                                      my.stdout_no_subset_binit_11_08_ma_lab_4
-binit_12_08.R                                      my.stdout_no_subset_binit_11_08_ma_lab_3
-binit_12_07.R                                      my.stdout_no_subset_binit_11_08_ma_lab_2
-SRR2240738_allValidPairs_binit_out_chr1            my.stdout_no_subset_binit_11_08_ma_lab_1
-my.stdout_binit_12_06_X_only                       my.stdout_no_subset_binit_11_07_ma_lab_7
-SRR2240738_allValidPairs_binit_out_12_06_chrX      my.stdout_no_subset_binit_11_07_ma_lab_6
-my.stdout_binit_12_07_ch1_only                     my.stdout_no_subset_binit_11_07_ma_lab_5
-test_binit.sh~                                     my.stdout_no_subset_binit_11_07_ma_lab_4
-my.stdout_binit_12_07_M_only                       my.stdout_no_subset_binit_11_07_ma_lab_3
-SRR2240738_allValidPairs_binit_out_chrM            my.stdout_no_subset_binit_11_07_ma_lab_2
-binit_12_07.R~                                     my.stdout_no_subset_binit_11_07_ma_lab
-binit_11_28.R                                      binit_11_06.R
-binit_11_28.R~                                     my.stdout_no_subset_binit
-my.stdout_binit_11_29                              my.stdout_string_ifelse
-binit_11_15.R                                      binit_11_02.R
-binit_11_22.R                                      dictionarypractice.R
-slurm-1279580.out                                  binit_string_test.R
-get-fastq.sh                                       binit_11_01.R
-binit_chr_select.R                                 my.stdout_string
-mNPe_allValidPairs_binit_out_11_13_binit_out_chr1  binit.R
-testing_binit_loop_11_08.R                         my.stdout2
-binit_11_10.R                                      mNPe_allValidPairs_binit_out2
-mNPe_allValidPairs_binit_out_11_15                 my.stdout3
-my.stdout_no_subset_binit_11_13                    my.stdout
-mNPe_allValidPairs_binit_out_11_13                 mNPe_allValidPairs_binit_out3
-binit_11_09.R                                      slurm-1217795.out
-binit_11_13.R                                      slurm-1217790.out
-binningV2.R                                        slurm-1217763.out
-my.stdout_no_subset_binit_11_10                    test_binit.R
-mNPe_allValidPairs_binit_out_11_10                 slurm-1217762.out
-my.stdout_no_subset_binit_11_09_ma_lab_chr5        binit_testing.R
-mNPe_allValidPairs_binit_out_11_09_chr5            binit_out
-my.stdout_no_subset_binit_11_09_ma_lab_chr4        bintest.sh
-mNPe_allValidPairs_binit_out_11_09_chr4            binit.R~
-binit_11_07.R                                      binning_test
-binit_11_08.R                                      mm10_allele_test_load_cha_assign.R
-my.stdout_no_subset_binit_11_09_ma_lab_chr3        mm10_allele_test_load_cha_assign.R~
-mNPe_allValidPairs_binit_out_11_09_chr3            mm10_allele_test_load_cha_assign~
-my.stdout_no_subset_binit_11_09_ma_lab_chr2        make_hist_assignments.R
-mNPe_allValidPairs_binit_out_11_09_chr2t           slurm-1186709.out
-mNPe_allValidPairs_binit_out_11_09_chr2            make_hist_assignments.R~
-mNPe_allValidPairs_binit_out_11_09_chr1            get-fastq.sh~
-my.stdout_no_subset_binit_11_09_ma_lab_chr         build-index-mm10mask.sh
-my.stdout_no_subset_binit_11_09_ma_lab_2           build-index-mm10mask.sh~
-mNPe_allValidPairs_binit_out_11_09                 mask_mm9_w_129sRefCast2
-my.stdout_no_subset_binit_11_09_ma_lab_1           mask_mm9_w_129sRefCast2~
-my.stdout_no_subset_binit_11_08_ma_lab_8           Mask_mm9_w_129sRefCast~~
-mNPe_allValidPairs_binit_out_11_08b                extract_SNPs
-my.stdout_no_subset_binit_11_08_ma_lab_7_test-1    extract_SNPs~
-my.stdout_no_subset_binit_11_08_ma_lab_6           get-data-from-GEO.sh
-my.stdout_no_subset_binit_11_08_ma_lab_5           get-data-from-GEO.sh~
-tkata002@globus:~/bigdata/hic/bin$ less my.stdout_binit_12_06_X_only
-tkata002@globus:~/bigdata/hic/bin$ less my.stdout_binit_12_06_X_only
-tkata002@globus:~/bigdata/hic/bin$ squeue -u tkata002
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           1326171   highmem binit_12 tkata002 CG 1-03:13:43      1 h05
-           1325115   highmem binit_11 tkata002  R 2-22:51:56      1 h03
-tkata002@globus:~/bigdata/hic/bin$ ls -t
-binit_12_08.R                                      mNPe_allValidPairs_binit_out
-my.stdout_binit_12_08_ch1_only                     my.stdout_no_subset_binit_11_08_ma_lab_4
-test_binit.sh                                      my.stdout_no_subset_binit_11_08_ma_lab_3
-binit_12_07.R                                      my.stdout_no_subset_binit_11_08_ma_lab_2
-SRR2240738_allValidPairs_binit_out_chr1            my.stdout_no_subset_binit_11_08_ma_lab_1
-my.stdout_binit_12_06_X_only                       my.stdout_no_subset_binit_11_07_ma_lab_7
-SRR2240738_allValidPairs_binit_out_12_06_chrX      my.stdout_no_subset_binit_11_07_ma_lab_6
-my.stdout_binit_12_07_ch1_only                     my.stdout_no_subset_binit_11_07_ma_lab_5
-test_binit.sh~                                     my.stdout_no_subset_binit_11_07_ma_lab_4
-my.stdout_binit_12_07_M_only                       my.stdout_no_subset_binit_11_07_ma_lab_3
-SRR2240738_allValidPairs_binit_out_chrM            my.stdout_no_subset_binit_11_07_ma_lab_2
-binit_12_07.R~                                     my.stdout_no_subset_binit_11_07_ma_lab
-binit_11_28.R                                      binit_11_06.R
-binit_11_28.R~                                     my.stdout_no_subset_binit
-my.stdout_binit_11_29                              my.stdout_string_ifelse
-binit_11_15.R                                      binit_11_02.R
-binit_11_22.R                                      dictionarypractice.R
-slurm-1279580.out                                  binit_string_test.R
-get-fastq.sh                                       binit_11_01.R
-binit_chr_select.R                                 my.stdout_string
-mNPe_allValidPairs_binit_out_11_13_binit_out_chr1  binit.R
-testing_binit_loop_11_08.R                         my.stdout2
-binit_11_10.R                                      mNPe_allValidPairs_binit_out2
-mNPe_allValidPairs_binit_out_11_15                 my.stdout3
-my.stdout_no_subset_binit_11_13                    my.stdout
-mNPe_allValidPairs_binit_out_11_13                 mNPe_allValidPairs_binit_out3
-binit_11_09.R                                      slurm-1217795.out
-binit_11_13.R                                      slurm-1217790.out
-binningV2.R                                        slurm-1217763.out
-my.stdout_no_subset_binit_11_10                    test_binit.R
-mNPe_allValidPairs_binit_out_11_10                 slurm-1217762.out
-my.stdout_no_subset_binit_11_09_ma_lab_chr5        binit_testing.R
-mNPe_allValidPairs_binit_out_11_09_chr5            binit_out
-my.stdout_no_subset_binit_11_09_ma_lab_chr4        bintest.sh
-mNPe_allValidPairs_binit_out_11_09_chr4            binit.R~
-binit_11_07.R                                      binning_test
-binit_11_08.R                                      mm10_allele_test_load_cha_assign.R
-my.stdout_no_subset_binit_11_09_ma_lab_chr3        mm10_allele_test_load_cha_assign.R~
-mNPe_allValidPairs_binit_out_11_09_chr3            mm10_allele_test_load_cha_assign~
-my.stdout_no_subset_binit_11_09_ma_lab_chr2        make_hist_assignments.R
-mNPe_allValidPairs_binit_out_11_09_chr2t           slurm-1186709.out
-mNPe_allValidPairs_binit_out_11_09_chr2            make_hist_assignments.R~
-mNPe_allValidPairs_binit_out_11_09_chr1            get-fastq.sh~
-my.stdout_no_subset_binit_11_09_ma_lab_chr         build-index-mm10mask.sh
-my.stdout_no_subset_binit_11_09_ma_lab_2           build-index-mm10mask.sh~
-mNPe_allValidPairs_binit_out_11_09                 mask_mm9_w_129sRefCast2
-my.stdout_no_subset_binit_11_09_ma_lab_1           mask_mm9_w_129sRefCast2~
-my.stdout_no_subset_binit_11_08_ma_lab_8           Mask_mm9_w_129sRefCast~~
-mNPe_allValidPairs_binit_out_11_08b                extract_SNPs
-my.stdout_no_subset_binit_11_08_ma_lab_7_test-1    extract_SNPs~
-my.stdout_no_subset_binit_11_08_ma_lab_6           get-data-from-GEO.sh
-my.stdout_no_subset_binit_11_08_ma_lab_5           get-data-from-GEO.sh~
-tkata002@globus:~/bigdata/hic/bin$ cd my.stdout_binit_12_08_ch1_only 
--bash: cd: my.stdout_binit_12_08_ch1_only: Not a directory
-tkata002@globus:~/bigdata/hic/bin$ ls my.stdout_binit_12_08_ch1_only 
-my.stdout_binit_12_08_ch1_only
-tkata002@globus:~/bigdata/hic/bin$ less my.stdout_binit_12_08_ch1_only 
-tkata002@globus:~/bigdata/hic/bin$ vim test
-tkata002@globus:~/bigdata/hic/bin$ vim test_binit.sh
-tkata002@globus:~/bigdata/hic/bin$ sbatch test_binit.sh
-Submitted batch job 1329201
-tkata002@globus:~/bigdata/hic/bin$ packet_write_wait: Connection to 138.23.51.30 port 22: Broken pipe
-ucrwpa3-7-10-25-89-207:~ malab$ ssh -XY tkata002@biocluster.ucr.edu
-tkata002@biocluster.ucr.edu's password: 
-Permission denied, please try again.
-tkata002@biocluster.ucr.edu's password: 
-Last failed login: Thu Dec 14 12:05:41 PST 2017 from 169.235.209.133 on ssh:notty
-There was 1 failed login attempt since the last successful login.
-Last login: Fri Dec  8 15:14:42 2017 from 169.235.209.133
-
---------------------------------------------------------------------------------
- University of California, Riverside - HPCC (High-Performance Computing Center)
---------------------------------------------------------------------------------
-
-More information about HPCC and how to use the resources provided can
-be found at http://hpcc.ucr.edu/manuals_linux-cluster_intro.html
-
-Please send all questions and support requests to support@biocluster.ucr.edu
-
-Note: The default version of R is now 3.4.2
---------------------------------------------------------------------------------
-
-tkata002@owl:~$ tmux
-
+#datain file should be the "****_allValidPairs" file, this R script removes INTER-chromosomal reads, selects ONE user defined chromosome, gives nice col.names, bins, creates data.frame with only useful info 
+binit <- function(input_data="~/bigdata/hic/data/SRR2240738/mm10/output/hic_results/data/mNPe/mNPe_allValidPairs", sbin=10000, sav.loc="./", ch.sizes="~/bigdata/hic/data/SRR2240738/mm10/mm10.chrom.sizes", chr_want= "chr1"){
+  
+  ###### ERROR CHECK, adding "/"
+  if(!is.character(sav.loc)) stop("sav.loc must be a character string")
+  split.string = unlist(strsplit(sav.loc,""))
+  l = length(split.string)
+  lastchar = split.string[l]
+  if(lastchar!="/") input_data = paste0(sav.loc,"/")
+  
+  ##### DATA MANIP, making sure input has "/" and creating outfile name based on the infile name
+  # input_data file should be the "****_allValidPairs"
+  inputlist = strsplit(input_data,"/") 
+  inputsplit = inputlist[[1]] # could use unlist command
+  l = length(inputsplit)
+  outfile_name = paste0(inputsplit[l],"_binit_out_test_12_15",chr_want) ###advisable to add date
+  ######
+  
+  
+  
+  
+  
+  
+  #### Chromosome size
+  #getting chrom sizes and creating cumulative numbers of bins for each chromosome
+  chrom.size<-read.table(ch.sizes)
+  
+  numbins <- ceiling(chrom.size[,2]/sbin) #number of bins per chromosome
+  
+  chromes = as.character(chrom.size$V1[-1])
+  
+  cumbins<-cumsum(numbins)
+  cumbins = cumbins[-length(cumbins)]
+  
+  cumbins= as.data.frame(cumbins,ncol=1,row.names = chromes) #cumulative bin numbers across all chromosomes 
+  
+  
+  
+  
+  ###introduce input data
+  datain <- read.table(input_data)[1:200,]
+  colnames(datain) <-  c("read_name", "rd1_ch", "rd_pos_1", "strand1", "rd2_ch", "rd_pos_2", "strand2", "frag_lngth","res_frag_1", "res_frag_2", "map_qual_1", "map_qual_2", "chrom_assign")
+  
+  dataintest <- read.table("/bigdata/wmalab/tkata002/hic/bin/test_binit_datain")
+  
+  # test_datain <- rbind(datain[2,],datain[2,],datain[2,],datain[2,],datain[2,],datain[2,],datain[2,],datain[2,], test2, test2, test3,test3,test3,test4, deparse.level = 0)
+  # head(test_datain)
+  # 
+  # dim(test_datain)
+  # 
+  # 
+  # test2<- datain[2,]
+  # test2[1,13] <- "1-2"
+  # 
+  # test3<-datain[2,]
+  # test3[1,3] <-5004201
+  # 
+  # test4 <- datain[2,]
+  # test4[1,3] <-7004201
+  # 
+  # datain <- test_datain
+  # 
+  # 
+  # write.table(datain,"test_binit_datain",append=FALSE, sep="\t", quote=FALSE)
+  
+  
+  
+  ###working on removing all interchomosomal links
+  #sum <-sum(datain$rd2_ch == "chrY")
+  #datain_test <- datain[datain$rd2_ch != "chrY",]
+  
+  #test <- c(datain_test$rd1_ch != datain_test$rd2_ch)
+  #datain_test<- datain[datain$rd2_ch != "chrY",]
+  #datain_test2 <- complete.cases(datain_test)
+  #datain_test <- droplevels(datain[datain$rd2_ch != "chrY",])
+  
+  #datain_test <- subset(datain, datain$rd2_ch != "chrY")
+  #datain_test$rd2_ch <- datain_test$rd2_ch[,drop = TRUE]
+  #levels(datain_test2$rd)
+  
+  #datain_test <-datain
+  #test2 <- droplevels(datain_test,datain$rd2_ch == "chrY",[datain$rd2_ch != "chrY"],datain_test[,-datain_test$rd2_ch])
+  
+  #levels(datain_test$rd2_ch)
+  #show <- datain_test[datain$rd2_ch == "chrY",]
+  
+  ##### removing any incomplete cases or levels that appear in read 2 but not read 1 (this means the parent with most chormosmomes needs to be "read 2")
+  datain[,5] <-factor(datain[,5], levels=c(levels(datain$rd1_ch)))#overwriting levels of rd2_ch with rd1_ch net change is rd2_ch loses chrY which is what i was trying to accomplish
+  datain <- datain[complete.cases(datain),]#removing all rows with <NA> cases (in test dataset only 83 of 859703)
+  
+  
+  #levels(datain_test$rd1_ch)
+  #levels(datain_test$rd2_ch)
+  
+  ##### removing all reads but those for a single chromosome
+  datain_no_inter1<- datain[datain$rd1_ch == as.character(chr_want),] 
+  datain_no_inter <- datain_no_inter1[datain_no_inter1$rd1_ch == datain_no_inter1$rd2_ch,]
+  
+  #testsum <- sum(datain_test2$rd1_ch != datain_test2$rd2_ch)
+  
+  
+  ### preliminary bining, the bin numbers this produces will be indexed on each chromosome
+  bin_rd_pos_1<- floor(datain_no_inter$rd_pos_1/sbin) #gives chromosome indexed bin number
+  bin_rd_pos_2<- floor(datain_no_inter$rd_pos_2/sbin)
+  
+  # #### spliting 0-0 to 0,0 as two columns
+  # binit_in_progress<-data.frame(datain_no_inter$read_name, datain_no_inter$rd1_ch, datain_no_inter$rd_pos_1, bin_rd_pos_1, datain_no_inter$rd2_ch, datain_no_inter$rd_pos_2, bin_rd_pos_2, datain_no_inter$chrom_assign, row.names=TRUE)
+  # 
+  # chrm_assign_col <-(binit_in_progress$datain_no_inter.chrom_assign)
+  # char_chrm_assign_col <-as.character(chrm_assign_col) #needs to be char for strsplit
+  # splt_chrm_assign_col <- strsplit(char_chrm_assign_col,"-")
+  # 
+  # unlist_chrm_assign_col <- unlist(splt_chrm_assign_col, recursive = TRUE, use.names = TRUE)
+  # 
+  # df_chrom_assign_col <- matrix(unlist_chrm_assign_col,ncol=2, byrow=TRUE)
+  # 
+  # type_both <- as.data.frame(df_chrom_assign_col)
+  # colnames(type_both) = c("type1","type2")
+  #########
+  
+  ##### data processsing cont., selecting just the columns we care about.
+  binit_out<-data.frame(datain_no_inter$read_name, datain_no_inter$rd1_ch, datain_no_inter$rd_pos_1, bin_rd_pos_1, datain_no_inter$rd2_ch, datain_no_inter$rd_pos_2, bin_rd_pos_2, datain_no_inter$chrom_assign, row.names=NULL)
+  
+  #### creating placeholder
+  binit_preprocessed <- binit_out
+  
+  
+  ##### making all bins seqential along entire genome
+  for(chr in chromes){
+    add_index = cumbins[chr,] #adding the cumulative sum of bins to make the bin number outputs all sequential
+    #chr <- as.factor(chr)
+    
+    temp1 = binit_out$bin_rd_pos_1[ binit_out$datain_no_inter.rd1_ch == chr ]
+    binit_out$bin_rd_pos_1[ binit_out$datain_no_inter.rd1_ch == chr ] = temp1 + add_index
+    
+    temp2 = binit_out$bin_rd_pos_2[ binit_out$datain_no_inter.rd2_ch == chr ]
+    binit_out$bin_rd_pos_2[ binit_out$datain_no_inter.rd2_ch == chr ] = temp2 + add_index
+  }
+  
+  #####making the reads sequential as well
+  chrom.sizer = chrom.size[-length(chrom.size),]
+  chrom.sizer <-as.data.frame(chrom.sizer,ncol=1,row.names = chromes) 
+  #chrom.sizer <- colnames(chrom.sizer$V1)
+  for(chr in chromes){
+    add_indexr = chrom.sizer[chr,2] #adding the cumulative sum of reads to make the reads all sequential, not indexed on each chrom
+    
+    tempr1 = binit_out$datain.rd_pos_1[ binit_out$datain_no_inter.rd1_ch == chr ]
+    binit_out$datain.rd_pos_1[ binit_out$datain_no_inter.rd1_ch == chr ] = tempr1 + add_indexr
+    
+    tempr2 = binit_out$datain.rd_pos_2[ binit_out$datain_no_inter.rd2_ch == chr ]
+    binit_out$datain.rd_pos_2[ binit_out$datain_no_inter.rd2_ch == chr ] = tempr2 + add_indexr
+  }
+  
+  
+  # ##check to see if the sequntial binning worked
+  # length(binit_out$bin_rd_pos_2)
+  # n= 200000:300000
+  # 
+  # test <- binit_out$datain.rd_pos_1[n]>binit_out$datain.rd_pos_2[n+1]
+  # class(test)
+  # sum(test)
+  # length(test)
+  # length(n)
+  
+  
+  # unique_bin_combos <-unique(binit_out[c("bin_rd_pos_1", "bin_rd_pos_2")])
+  ##### making sure all bins are larger or = on the "left" #######****no longer necessary whith NO inter chrom links*****##### 
+  
+  # verify <- binit_out$datain_no_inter.rd_pos_1 > binit_out$datain_no_inter.rd_pos_2
+  # verify <- binit_out$bin_rd_pos_1 > binit_out$bin_rd_pos_2
+  # #   head(verify) 
+  #  sum(verify)
+  # #   which(verify) 
+  # # max
+  # #binit_out[458087,]  #here bin_rd_pos_1 is greater than bin_rd_pos_2
+  # 
+  # 
+  # holdingbin1 <-binit_out$bin_rd_pos_1
+  # holdingbin2 <-binit_out$bin_rd_pos_2
+  # 
+  # holdingchr1 <-binit_out$datain.rd1_ch
+  # holdingchr2 <-binit_out$datain.rd2_ch
+  # 
+  # holdingrdpos1 <- binit_out$datain.rd_pos_1
+  # holdingrdpos2 <- binit_out$datain.rd_pos_2
+  # 
+  # binit_out$bin_rd_pos_1[verify] <- holdingbin2[verify] 
+  # binit_out$bin_rd_pos_2[verify] <- holdingbin1[verify]
+  # 
+  # binit_out$datain.rd1_ch[verify] <- holdingchr2[verify]
+  # binit_out$datain.rd2_ch[verify] <- holdingchr1[verify]
+  # 
+  # binit_out$datain.rd_pos_1[verify] <- holdingrdpos2[verify]
+  # binit_out$datain.rd_pos_2[verify] <- holdingrdpos1[verify]
+  # 
+  
+  
+  
+  #    verify2 <- binit_out$bin_rd_pos_1 > binit_out$bin_rd_pos_2
+  # sum(verify2)#this doesnt seem to be working, the switching
+  # 
+  # head(binit_out) ###rd_pos not adding index sufficinetly
+  # 
+  
+  
+  #####  SORTING then selecting all rows in binit_out within unique pair of bins
+  sorted_binit_out <- binit_out[order(binit_out$bin_rd_pos_1,binit_out$bin_rd_pos_2),] #####this may not be needed when only using reads from a single chromosome
+  
+  unique_bins <- unique(cbind(sorted_binit_out$bin_rd_pos_1, sorted_binit_out$bin_rd_pos_2)) #2 col matrix with all unique bin combos
+  colnames(unique_bins) <- c("bin_1", "bin_2")
+  
+  ####initializing the output data.frame
+  empty_frame <- data.frame(matrix(0,ncol=9,nrow=nrow(unique_bins)))
+  colnames(empty_frame) = c("a-a", "a-b", "b-a", "b-b", "a-x", "b-x", "x-a", "x-b", "x-x" )
+  final_frame <- cbind.data.frame(unique_bins, empty_frame)#initializing
+  
+  
+  
+  ####New counting scheme (turning the factor column "chrom.assign" into counts in several columns)
+  unique_bin_row <-1
+  
+  length_binit_out <- 1:(length(sorted_binit_out$datain_no_inter.chrom_assign))
+  for(row in length_binit_out){
+    
+    ##if the current row bin combo doesnt match the unique bin combo in final_frame, this moves to the next unique bin line and adds counts as if it had started this loop with the new value of unique_bin_row
+    if(sorted_binit_out$bin_rd_pos_1[row] != final_frame$bin_1[unique_bin_row]||(sorted_binit_out$bin_rd_pos_2[row] != final_frame$bin_2[unique_bin_row])){ 
+      unique_bin_row <- sum(unique_bin_row + 1)
+      if(sorted_binit_out$bin_rd_pos_1[row] == final_frame[unique_bin_row,1]&&(sorted_binit_out$bin_rd_pos_2[row] == final_frame[unique_bin_row,2])){
+        
+        if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "0-0"){final_frame$`x-x`[unique_bin_row]= sum(final_frame$`x-x`[unique_bin_row]+1) 
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "0-1"){final_frame$`x-a`[unique_bin_row]= sum(final_frame$`x-a`[unique_bin_row]+1)
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "0-2"){final_frame$`x-b`[unique_bin_row]= sum(final_frame$`x-b`[unique_bin_row]+1) 
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "1-0"){final_frame$`a-x`[unique_bin_row]= sum(final_frame$`a-x`[unique_bin_row]+1)
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "2-0"){final_frame$`b-x`[unique_bin_row]= sum(final_frame$`b-x`[unique_bin_row]+1)
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "1-2"){final_frame$`a-b`[unique_bin_row]= sum(final_frame$`a-b`[unique_bin_row]+1)
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "2-1"){final_frame$`b-a`[unique_bin_row]= sum(final_frame$`b-a`[unique_bin_row]+1)
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "1-1"){final_frame$`a-a`[unique_bin_row]= sum(final_frame$`a-a`[unique_bin_row]+1)
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "2-2"){final_frame$`b-b`[unique_bin_row]= sum(final_frame$`b-b`[unique_bin_row]+1)
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "3-3"){final_frame$`x-x`[unique_bin_row]= sum(final_frame$`x-x`[unique_bin_row]+1)
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "3-0"){final_frame$`x-x`[unique_bin_row]= sum(final_frame$`x-x`[unique_bin_row]+1)
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "0-3"){final_frame$`x-x`[unique_bin_row]= sum(final_frame$`x-x`[unique_bin_row]+1)
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "1-3"){final_frame$`a-x`[unique_bin_row]= sum(final_frame$`a-x`[unique_bin_row]+1)
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "2-3"){final_frame$`b-x`[unique_bin_row]= sum(final_frame$`b-x`[unique_bin_row]+1)
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "3-2"){final_frame$`x-b`[unique_bin_row]= sum(final_frame$`x-b`[unique_bin_row]+1)
+        }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "3-1"){final_frame$`x-a`[unique_bin_row]= sum(final_frame$`x-a`[unique_bin_row]+1)
+        }else{stop("unexpected data in chrom_assign. see line 212")}
+        
+        
+      }
+      #this if statement determines if the current row(read) falls within the first pair of unique bins
+    }else if(sorted_binit_out$bin_rd_pos_1[row] == final_frame[unique_bin_row,1]&&(sorted_binit_out$bin_rd_pos_2[row] == final_frame[unique_bin_row,2])){
+      
+      #this looks terrible, but it just goes through each possible chom assignment and says for the current row, add one to right col in final_frame, if that cell in final frame already has some, add one more
+      if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "0-0"){final_frame$`x-x`[unique_bin_row]<- sum(final_frame$`x-x`[unique_bin_row]+1) 
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "0-1"){final_frame$`x-a`[unique_bin_row]= sum(final_frame$`x-a`[unique_bin_row]+1)
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "0-2"){final_frame$`x-b`[unique_bin_row]= sum(final_frame$`x-b`[unique_bin_row]+1) 
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "1-0"){final_frame$`a-x`[unique_bin_row]= sum(final_frame$`a-x`[unique_bin_row]+1)
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "2-0"){final_frame$`b-x`[unique_bin_row]= sum(final_frame$`b-x`[unique_bin_row]+1)
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "1-2"){final_frame$`a-b`[unique_bin_row]= sum(final_frame$`a-b`[unique_bin_row]+1)
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "2-1"){final_frame$`b-a`[unique_bin_row]= sum(final_frame$`b-a`[unique_bin_row]+1)
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "1-1"){final_frame$`a-a`[unique_bin_row]= sum(final_frame$`a-a`[unique_bin_row]+1)
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "2-2"){final_frame$`b-b`[unique_bin_row]= sum(final_frame$`b-b`[unique_bin_row]+1)
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "3-3"){final_frame$`x-x`[unique_bin_row]= sum(final_frame$`x-x`[unique_bin_row]+1)
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "3-0"){final_frame$`x-x`[unique_bin_row]= sum(final_frame$`x-x`[unique_bin_row]+1)
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "0-3"){final_frame$`x-x`[unique_bin_row]= sum(final_frame$`x-x`[unique_bin_row]+1)
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "1-3"){final_frame$`a-x`[unique_bin_row]= sum(final_frame$`a-x`[unique_bin_row]+1)
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "2-3"){final_frame$`b-x`[unique_bin_row]= sum(final_frame$`b-x`[unique_bin_row]+1)
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "3-2"){final_frame$`x-b`[unique_bin_row]= sum(final_frame$`x-b`[unique_bin_row]+1)
+      }else if(sorted_binit_out$datain_no_inter.chrom_assign[row] == "3-1"){final_frame$`x-a`[unique_bin_row]= sum(final_frame$`x-a`[unique_bin_row]+1)
+      }else{stop("unexpected data in chrom_assign. see line 255")}
+      
+      
+      
+    }
+    
+  }
+  #this one goes to if current row bin combo = FF bin combo
+  # else(){ unique_bin_row <- (unique_bin_row + 1) #else for if we need to move down a line in final_frame **possible to not have at least one read in each unique pair of bins? yes.
+  #   if(sorted_binit_out$bin_rd_pos_1[row] != final_frame$bin_1[unique_bin_row]){unique_bin_row <- (unique_bin_row + 1)}
+  
+  #}if unique_bin_row needs to be moved forward(+1)
+  
+  
+  
+  
+  
+  
+  
+  
+  # ####Counting the chomrosome linkages
+  # tot_unique_bins = 1:(nrow(unique_bins))  
+  # for(n in tot_unique_bins){
+  #   
+  #   this_loop_combo_1 <- unique_bins[n,1] 
+  #   this_loop_combo_2 <- unique_bins[n,2]
+  #   
+  #   this_loop_rows <-binit_out[binit_out$bin_rd_pos_1 == this_loop_combo_1,]
+  #   this_loop_rows_final <- this_loop_rows[this_loop_rows$bin_rd_pos_2 == this_loop_combo_2,]
+  #   
+  #   final_frame$`x-x`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 0 &  this_loop_rows_final$type_both.type2 == 0 )
+  #   final_frame$`x-a`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 0 &  this_loop_rows_final$type_both.type2 == 1 )
+  #   final_frame$`x-b`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 0 &  this_loop_rows_final$type_both.type2 == 2 )
+  #   final_frame$`a-x`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 1 &  this_loop_rows_final$type_both.type2 == 0 )
+  #   final_frame$`b-x`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 2 &  this_loop_rows_final$type_both.type2 == 0 )
+  #   final_frame$`a-b`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 1 &  this_loop_rows_final$type_both.type2 == 2 ) 
+  #   final_frame$`b-a`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 2 &  this_loop_rows_final$type_both.type2 == 1 )
+  #   final_frame$`a-a`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 1 &  this_loop_rows_final$type_both.type2 == 1 )
+  #   final_frame$`b-b`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 2 &  this_loop_rows_final$type_both.type2 == 2 )
+  #   
+  #   #moving the "3s" or "conficting reads into unassigned
+  #   final_frame$`x-x`[unique_bin_row] final_frame$`x-x`[unique_bin_row]+ sum(this_loop_rows_final$type_both.type1 == 3 &  this_loop_rows_final$type_both.type2 == 3)
+  #   final_frame$`x-x`[unique_bin_row] final_frame$`x-x`[unique_bin_row]+ sum(this_loop_rows_final$type_both.type1 == 3 &  this_loop_rows_final$type_both.type2 == 0)
+  #   final_frame$`x-x`[unique_bin_row] final_frame$`x-x`[unique_bin_row]+ sum(this_loop_rows_final$type_both.type1 == 0 &  this_loop_rows_final$type_both.type2 == 3)
+  #   final_frame$`a-x`[unique_bin_row] final_frame$`a-x`[unique_bin_row]+ sum(this_loop_rows_final$type_both.type1 == 1 &  this_loop_rows_final$type_both.type2 == 3)
+  #   final_frame$`b-x`[unique_bin_row] final_frame$`b-x`[unique_bin_row]+ sum(this_loop_rows_final$type_both.type1 == 2 &  this_loop_rows_final$type_both.type2 == 3)
+  #   final_frame$`x-b`[unique_bin_row] final_frame$`x-b`[unique_bin_row] + sum(this_loop_rows_final$type_both.type1 == 3 &  this_loop_rows_final$type_both.type2 == 2)
+  #   final_frame$`x-a`[unique_bin_row] final_frame$`x-a`[unique_bin_row] + sum(this_loop_rows_final$type_both.type1 == 3 &  this_loop_rows_final$type_both.type2 == 1)
   #   
   #   final_frame$`x-x`[n] = count_00
   #   final_frame$`x-a`[n] = final_frame$`x-a`[unique_bin_row] 
@@ -287,5 +370,6 @@ tkata002@owl:~$ tmux
   
   
 }
+
 
 
