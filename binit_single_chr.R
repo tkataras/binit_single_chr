@@ -283,61 +283,7 @@ binit <- function(input_data="~/bigdata/hic/data/SRR2240738/mm10/output/hic_resu
     }
     
   }
-  #this one goes to if current row bin combo = FF bin combo
-  # else(){ unique_bin_row <- (unique_bin_row + 1) #else for if we need to move down a line in final_frame **possible to not have at least one read in each unique pair of bins? yes.
-  #   if(sorted_binit_out$bin_rd_pos_1[row] != final_frame$bin_1[unique_bin_row]){unique_bin_row <- (unique_bin_row + 1)}
   
-  #}if unique_bin_row needs to be moved forward(+1)
-  
-  
-  
-  
-  
-  
-  
-  
-  # ####Counting the chomrosome linkages
-  # tot_unique_bins = 1:(nrow(unique_bins))  
-  # for(n in tot_unique_bins){
-  #   
-  #   this_loop_combo_1 <- unique_bins[n,1] 
-  #   this_loop_combo_2 <- unique_bins[n,2]
-  #   
-  #   this_loop_rows <-binit_out[binit_out$bin_rd_pos_1 == this_loop_combo_1,]
-  #   this_loop_rows_final <- this_loop_rows[this_loop_rows$bin_rd_pos_2 == this_loop_combo_2,]
-  #   
-  #   final_frame$`x-x`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 0 &  this_loop_rows_final$type_both.type2 == 0 )
-  #   final_frame$`x-a`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 0 &  this_loop_rows_final$type_both.type2 == 1 )
-  #   final_frame$`x-b`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 0 &  this_loop_rows_final$type_both.type2 == 2 )
-  #   final_frame$`a-x`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 1 &  this_loop_rows_final$type_both.type2 == 0 )
-  #   final_frame$`b-x`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 2 &  this_loop_rows_final$type_both.type2 == 0 )
-  #   final_frame$`a-b`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 1 &  this_loop_rows_final$type_both.type2 == 2 ) 
-  #   final_frame$`b-a`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 2 &  this_loop_rows_final$type_both.type2 == 1 )
-  #   final_frame$`a-a`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 1 &  this_loop_rows_final$type_both.type2 == 1 )
-  #   final_frame$`b-b`[unique_bin_row] sum(this_loop_rows_final$type_both.type1 == 2 &  this_loop_rows_final$type_both.type2 == 2 )
-  #   
-  #   #moving the "3s" or "conficting reads into unassigned
-  #   final_frame$`x-x`[unique_bin_row] final_frame$`x-x`[unique_bin_row]+ sum(this_loop_rows_final$type_both.type1 == 3 &  this_loop_rows_final$type_both.type2 == 3)
-  #   final_frame$`x-x`[unique_bin_row] final_frame$`x-x`[unique_bin_row]+ sum(this_loop_rows_final$type_both.type1 == 3 &  this_loop_rows_final$type_both.type2 == 0)
-  #   final_frame$`x-x`[unique_bin_row] final_frame$`x-x`[unique_bin_row]+ sum(this_loop_rows_final$type_both.type1 == 0 &  this_loop_rows_final$type_both.type2 == 3)
-  #   final_frame$`a-x`[unique_bin_row] final_frame$`a-x`[unique_bin_row]+ sum(this_loop_rows_final$type_both.type1 == 1 &  this_loop_rows_final$type_both.type2 == 3)
-  #   final_frame$`b-x`[unique_bin_row] final_frame$`b-x`[unique_bin_row]+ sum(this_loop_rows_final$type_both.type1 == 2 &  this_loop_rows_final$type_both.type2 == 3)
-  #   final_frame$`x-b`[unique_bin_row] final_frame$`x-b`[unique_bin_row] + sum(this_loop_rows_final$type_both.type1 == 3 &  this_loop_rows_final$type_both.type2 == 2)
-  #   final_frame$`x-a`[unique_bin_row] final_frame$`x-a`[unique_bin_row] + sum(this_loop_rows_final$type_both.type1 == 3 &  this_loop_rows_final$type_both.type2 == 1)
-  #   
-  #   final_frame$`x-x`[n] = count_00
-  #   final_frame$`x-a`[n] = final_frame$`x-a`[unique_bin_row] 
-  #   final_frame$`x-b`[n] = final_frame$`x-b`[unique_bin_row]
-  #   final_frame$`a-x`[n] = count_10
-  #   final_frame$`b-x`[n] = count_20
-  #   final_frame$`a-a`[n] = count_11
-  #   final_frame$`b-b`[n] = count_22
-  #   final_frame$`a-b`[n] = count_12
-  #   final_frame$`b-a`[n] = count_21
-  #   
-  #   
-  #   
-  # }
   
   # #adding chromosome row to output from chr_want
   # correct_chr_1 <- as.character(chr_want)
